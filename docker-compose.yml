@@ -1,0 +1,35 @@
+version: "3"
+services:
+  # nestjs-app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - '8081:8081'
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     NODE_ENV: development
+  #     DATABASE_HOST: postgres
+  #     DATABASE_PORT: 5432
+  #     DATABASE_USERNAME: ttb-root
+  #     DATABASE_PASSWORD: ttb@testing
+  #     DATABASE_NAME: ttb_customer
+  #   networks:
+  #     - ttb-network
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: ttb-root
+      POSTGRES_PASSWORD: ttb@testing
+      POSTGRES_DB: ttb_customer
+    ports:
+      - "5432:5432"
+    networks:
+      - ttb-network
+
+networks:
+  ttb-network:
+    driver: bridge
